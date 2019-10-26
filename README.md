@@ -1,2 +1,7 @@
-# yhack2019-benn-edr
-YHack 2019 EDR Graph Database Search Algorithm
+# yhack2019 Project
+EDR Graph Database Search Algorithm
+
+Contributors: Cedric Lam, Stacey Nguyen, Quang Tran, Five Grant
+
+
+
