@@ -18,7 +18,7 @@ USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM 'file:///test.csv' AS row
 MATCH (c: Country)
 MATCH (s: State)
-MERGE (c)-[r:CONTAINS]->(s)
+MERGE (c)-[r:CONTAINS {year: row.Year}]->(s)
 RETURN c, s;
 
 // 4 load city
@@ -33,7 +33,7 @@ USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM 'file:///test.csv' AS row
 MATCH (s:State {name: row.State})
 MATCH (c:City {name:row.City})
-MERGE (s)-[r:CONTAINS]->(c)
+MERGE (s)-[r:CONTAINS {year: row.Year}]->(c)
 RETURN s, c;
 
 // 6 load zip
@@ -48,7 +48,7 @@ USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM 'file:///test.csv' AS row
 MATCH (cty:City {name: row.City})
 MATCH (zip:ZipCode {name:row.ZipCode})
-MERGE (cty)-[r:CONTAINS]->(zip)
+MERGE (cty)-[r:CONTAINS {year: row.Year}]->(zip)
 RETURN cty, zip;
 
 // 8 load street
@@ -62,7 +62,7 @@ USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM 'file:///test.csv' AS row
 MATCH (zip:ZipCode {name: row.ZipCode})
 MATCH (str:Street {name: coalesce(row.Street, 'Unknown')})
-MERGE (zip)-[r:CONTAINS]->(str)
+MERGE (zip)-[r:CONTAINS {year: row.Year}]->(str)
 RETURN zip, str;
 
 // 10 load housenum
@@ -76,7 +76,7 @@ USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM 'file:///test.csv' AS row
 MATCH (hn:HouseNum {name: coalesce(row.HouseNum, 'Unknown')})
 MATCH (str:Street {name: coalesce(row.Street, 'Unknown')})
-MERGE (hn)-[r:LIES_ALONG]->(str)
+MERGE (hn)-[r:LIES_ALONG {year: row.Year}]->(str)
 RETURN hn, str;
 
 // 12 load unit
@@ -90,7 +90,7 @@ USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM 'file:///test.csv' AS row
 MATCH (hn:HouseNum {name: coalesce(row.HouseNum, 'Unknown')})
 MATCH (u:Unit {name: coalesce(row.Unit, 'Unknown')})
-MERGE (hn)-[r:HAS_UNIT]->(u)
+MERGE (hn)-[r:HAS_UNIT {year: row.Year}]->(u)
 RETURN hn, u;
 
 // 14 load occupant
