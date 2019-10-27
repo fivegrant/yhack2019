@@ -1,4 +1,4 @@
-// assbackward fuckall graph builder
+// one script graph builder
 // 1 load country
 USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM "file:///test.csv" AS row   
