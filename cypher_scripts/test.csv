@@ -1,6 +1,6 @@
 Country,State,City,ZipCode,Street,HouseNum,Unit,Occupant,Year
-USA,CT,New Haven,1201,Cheshire RD,51,1,Mr T,2005
-USA,CT,New Haven,1201,Fugg XD,2,3,Mr Q,2005
+USA,CT,NEW Haven,1201,Cheshire RD,51,1,Mr T,2005
+USA,CT,New Haven,1201,RODE,2,3,Mr Q,2005
 USA,CT,New Haven,1202,Haha BLV,77,,Mr R,2010
 USA,CT,New Haven,1202,Haha BLV,79,4,Mr S,2014
 USA,CT,Fairfield,1303,:DDD Ave,4,,Mr A,2005

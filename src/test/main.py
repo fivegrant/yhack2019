@@ -1,5 +1,5 @@
-import graph
-import queries
+import module.graph
+import test.queries
 
 db_address="bolt://localhost:7687"
 db_password="password"
