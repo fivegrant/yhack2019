@@ -1,5 +1,4 @@
 // 8 load street
+USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM "file:///test.csv" AS row
-WITH row WHERE row.Street IS NOT NULL
-MERGE (s: Street {name: row.Street})
-RETURN s;
+MERGE (s:Street {name: coalesce(row.Street, "Unknown")})

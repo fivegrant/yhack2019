@@ -1,5 +1,5 @@
 // 12 load unit
+USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM "file:///test.csv" AS row
-WITH row WHERE row.Unit IS NOT NULL
-MERGE (u: Unit {name: row.Unit})
+MERGE(u: Unit {name: coalesce(row.Unit, 'Unknown')})
 RETURN u;

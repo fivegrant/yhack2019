@@ -1,5 +1,5 @@
 // 10 load housenum
-LOAD CSV WITH HEADERS FROM 'file:///test.csv' AS row
-WITH row WHERE row.HouseNum IS NOT NULL
-MERGE (hn: HouseNum {name:row.HouseNum})
+USING PERIODIC COMMIT 10000
+LOAD CSV WITH HEADERS FROM "file:///test.csv" AS row
+MERGE (hn: HouseNum {name: coalesce(row.HouseNum, "Unknown")})
 RETURN hn;
